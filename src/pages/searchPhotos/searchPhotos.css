@@ -1,0 +1,35 @@
+.container {
+    text-align: center;
+    height: 15rem;
+    background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\page-1-background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+}
+
+.title {
+    padding: 2.5rem 0;
+    font-family: 'Racing Sans One';
+    font-size: 3em;
+    font-weight: 1;
+    color: #FF0004;
+    -webkit-text-stroke: 0.1em white;
+    paint-order: stroke fill;
+}
+
+.input {
+    text-align: center;
+    font-family: 'Raleway';
+    font-size: 1.25em;
+    font-weight: 400;
+    padding: 0.9em;
+    width: 90%;
+    border: none;
+    border-radius: 2rem;
+}
+
+.input::placeholder {
+    color: #C1C1C1;
+    opacity: 1;
+}
