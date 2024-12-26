@@ -5,7 +5,7 @@ import { useEffect } from "react"
 import './containerPhotos.css'
 import { getPhotoData, getPhotoStatus, getPhotoError } from '../../features/photoSlice.js'
 import { GetPhotoListThunk } from "../../features/photoThunk.js"
-import { PhotoCreate } from "../photoCreate/photoCreate.jsx"
+import { DisplayPhoto } from "../displayPhoto/displayPhoto.jsx"
 
 export const ContainerPhotos = () => {
 
@@ -34,7 +34,7 @@ export const ContainerPhotos = () => {
             {PhotoLoading === "pending" ?
                 <p>Loading...</p> :
                 PhotoList.map((photo, index) =>
-                    <PhotoCreate key={index} url={photo.url} />
+                    <DisplayPhoto key={index} data={photo} />
                 )
             }
         </div>

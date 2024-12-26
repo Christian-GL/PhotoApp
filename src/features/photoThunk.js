@@ -4,11 +4,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const GetPhotoListThunk = createAsyncThunk("", async () => {
 
     const tokenAccesKey = '?client_id=AWEgvWVrPBmVzjAlGNA9Ba1QHo1VbAMxcYfW8sIHmY0'
-    // const param = "?count=20"
-    const param = ""
+    const param = "&count=6"
 
     try {
-        const request = await fetch(`https://api.unsplash.com/photos${tokenAccesKey}${param}`)
+        const request = await fetch(`https://api.unsplash.com/photos/random${tokenAccesKey}${param}`)
 
         if (request.ok) {
             const json = await request.json()
@@ -45,13 +44,13 @@ export const GetPhotoListThunk = createAsyncThunk("", async () => {
 //         let photoList = []
 //         for (let i = 0; i < 10; i++) {
 //             photoList.push({
-//                 id: 'id',
+//                 id: 'WqLUPvfvqIo',
 //                 url: 'https://images.unsplash.com/photo-1734532873375-574fd74045c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2ODkzNzd8MHwxfGFsbHwyfHx8fHx8fHwxNzM1MDY0MzA2fA&ixlib=rb-4.0.3&q=85',
-//                 width: 'w',
-//                 height: 'h',
-//                 likes: 'l',
-//                 added: 'a',
-//                 description: 'd'
+//                 width: 4990,
+//                 height: 6643,
+//                 likes: 76,
+//                 added: '2024-12-18T14:57:12Z',
+//                 description: 'un-reloj-en-el-costado-de-un-edificio-verde-WqLUPvfvqIo'
 //             })
 //         }
 //         return photoList

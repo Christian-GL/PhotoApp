@@ -12,14 +12,7 @@ export const PhotoSlice = createSlice({
         status: "idle",
         error: false
     },
-    reducers: {
-        "AddPhoto": (state, action) => {
-            state.data.push({ name: action.payload })
-        },
-        "RemoveAllPhotos": () => {
-            state.data = {}
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(GetPhotoListThunk.pending, (state, action) => {
             state.status = "pending"
@@ -38,6 +31,3 @@ export const PhotoSlice = createSlice({
 export const getPhotoData = (state) => state.photos.data
 export const getPhotoStatus = (state) => state.photos.status
 export const getPhotoError = (state) => state.photos.error
-
-export const { AddPhoto } = PhotoSlice.actions.AddPhoto
-export const { RemoveAllPhotos } = PhotoSlice.actions.RemoveAllPhotos

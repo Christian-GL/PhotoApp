@@ -40,23 +40,44 @@
     justify-content: center;
 }
 
-.buttonGoToPage2 {
+.button {
     margin: 1.5rem 0.5rem;
-    padding-right: 1.5em;
-    width: 8.5rem;
+    width: 10rem;
     height: 3rem;
     font-family: 'Raleway';
-    font-size: 1em;
     font-weight: 700;
     border: none;
     border-radius: 0.75rem;
     background-color: #C7C7C7;
+    background-repeat: no-repeat;
+}
+
+.button:hover {
+    box-shadow: 0 0 0.1rem 0.1rem black;
+}
+
+.buttonSortBy {
+    padding-right: 2em;
+    font-size: 1.5em;
+    background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\Sort-icon.png");
+    /* background-image: url("img\Sort-icon.png"); */
+    background-position: bottom 0.15em right 0.6em;
+    background-size: 40px 40px;
+}
+
+.buttonSwitchPage1 {
+    padding-right: 1.5em;
+    font-size: 1em;
     background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\Heart-icon.png");
     /* background-image: url("img\Heart-icon.png"); */
     background-position: bottom 0.6em right 0.6em;
-    background-repeat: no-repeat;
     background-size: 25px 25px;
 }
-.buttonGoToPage2:hover {
-    box-shadow: 0 0 0.1rem 0.1rem black;
+
+.buttonSwitchPage2 {
+    padding-right: 3em;
+    font-size: 0.9em;
+    background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\SearchPhotos-icon.png");
+    background-position: bottom 0.3em right 0.5em;
+    background-size: 40px 40px;
 }
