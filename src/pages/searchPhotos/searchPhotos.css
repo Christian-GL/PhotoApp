@@ -1,4 +1,4 @@
-.container {
+.containerHeader {
     text-align: center;
     height: 15rem;
     background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\page-1-background.jpg");
@@ -20,11 +20,11 @@
 
 .input {
     text-align: center;
-    font-family: 'Raleway';
-    font-size: 1.25em;
-    font-weight: 400;
-    padding: 0.9em;
+    padding: 0.5em;
     width: 90%;
+    font-family: 'Raleway';
+    font-size: 1.5em;
+    font-weight: 400;
     border: none;
     border-radius: 2rem;
 }
@@ -32,4 +32,31 @@
 .input::placeholder {
     color: #C1C1C1;
     opacity: 1;
+}
+
+.containerButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonGoToPage2 {
+    margin: 1.5rem 0.5rem;
+    padding-right: 1.5em;
+    width: 8.5rem;
+    height: 3rem;
+    font-family: 'Raleway';
+    font-size: 1em;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.75rem;
+    background-color: #C7C7C7;
+    background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\Heart-icon.png");
+    /* background-image: url("img\Heart-icon.png"); */
+    background-position: bottom 0.6em right 0.6em;
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+}
+.buttonGoToPage2:hover {
+    box-shadow: 0 0 0.1rem 0.1rem black;
 }

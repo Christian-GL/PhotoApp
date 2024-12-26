@@ -1,4 +1,72 @@
-.img {
-    width: 150px;
-    height: 150px;
+#containerPhoto {
+    position: relative;
+}
+
+#photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    /* object-fit: fill; */
+}
+
+#photo:hover {
+    @media only screen and (min-width: 1000px) {
+        box-shadow: 0 0 0.2rem 0.2rem black;
+    }
+}
+
+#photo:hover~#download {
+    display: block;
+}
+
+#photo:hover~#favorite {
+    display: block;
+}
+
+#download {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    /* width: 17.5%;
+    height: 17.5%;
+    min-width: 2rem;
+    min-height: 2rem;
+    max-width: 3rem;
+    max-height: 3rem; */
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+#configuration {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    /* width: 25%;
+    height: 10%;
+    min-width: 4rem;
+    min-height: 2rem;
+    max-width: 5rem;
+    max-height: 3rem; */
+    width: 4rem;
+    height: 2rem;
+    right: 2.5rem;
+    bottom: 1rem;
+}
+
+#favorite {
+    position: absolute;
+    display: none;
+    z-index: 1;
+    /* width: 20%;
+    height: 20%;
+    min-width: 2.4rem;
+    min-height: 2.4rem;
+    max-width: 3.4rem;
+    max-height: 3.4rem; */
+    width: 3rem;
+    height: 3rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
 }
