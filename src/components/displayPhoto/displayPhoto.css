@@ -12,14 +12,6 @@
     box-shadow: 0 0 0.2rem 0.2rem black;
 }
 
-.photo:hover~.download {
-    display: block;
-}
-
-.photo:hover~.favorite {
-    display: block;
-}
-
 .download {
     position: absolute;
     display: block;
@@ -27,6 +19,12 @@
     height: 2.5rem;
     top: 0.75rem;
     right: 0.75rem;
+}
+
+.download:hover {
+    transform: scale(1.25);
+    transition: 0.25s;
+    cursor: pointer;
 }
 
 /* .download:hover {
@@ -50,6 +48,12 @@
     bottom: 1rem;
 }
 
+.configuration:hover {
+    transform: scale(1.25);
+    transition: 0.25s;
+    cursor: pointer;
+}
+
 .nonFavorite {
     position: absolute;
     display: block;
@@ -59,19 +63,36 @@
     bottom: 0.5rem;
 }
 
-.nonFavoriteHide {
-    display: none;
+.nonFavorite:hover {
+    transform: scale(1.25);
+    transition: 0.25s;
+    cursor: pointer;
 }
 
 .favorite {
     position: absolute;
     display: none;
-    width: 3rem;
-    height: 3rem;
-    right: 0.5rem;
-    bottom: 0.5rem;
+    width: 2.15rem;
+    height: 2rem;
+    right: 0.9rem;
+    bottom: 1rem;
 }
 
-.favoriteDisplay {
+.favorite:hover {
+    transform: scale(1.25);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/* .favorite:hover {
+    display: none;
+    background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\HearthSplitted-icon.png");
+} */
+
+.displayBlock {
     display: block;
+}
+
+.displayNone {
+    display: none;
 }

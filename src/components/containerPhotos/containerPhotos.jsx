@@ -3,37 +3,39 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
 import './containerPhotos.css'
-import { getPhotoData, getPhotoStatus, getPhotoError } from '../../features/photoSlice.js'
-import { GetPhotoListThunk } from "../../features/photoThunk.js"
+import { getRandomPhotoData, getRandomPhotoStatus, getRandomPhotoError } from '../../features/random/randomPhotoListSlice.js'
+import { getSearchPhotoData, getSearchPhotoStatus, getSearchPhotoError } from '../../features/search/searchPhotoListSlice.js'
+import { RandomPhotoListThunk } from "../../features/random/randomPhotoListThunk.js"
 import { DisplayPhoto } from "../displayPhoto/displayPhoto.jsx"
 
 export const ContainerPhotos = () => {
 
     const dispatch = useDispatch()
 
-    const PhotoList = useSelector(getPhotoData)
-    const PhotoLoading = useSelector(getPhotoStatus)
-    // const PhotoError = useSelector(getPhotoError)       // <-- USAR ESTO
+    const randomPhotoList = useSelector(getRandomPhotoData)
+    const randomPhotoLoading = useSelector(getRandomPhotoStatus)
+    // const randomPhotoError = useSelector(getRandomPhotoError)       // <-- USAR ESTO
 
     useEffect(() => {
-        // console.log(getPhotoStatus)
-
-        if (PhotoLoading === "idle") {
-            dispatch(GetPhotoListThunk())
+        if (randomPhotoLoading === "idle") {
+            dispatch(RandomPhotoListThunk())
         }
-        else if (PhotoLoading === "fulfilled") {
-
+        else if (randomPhotoLoading === "fulfilled") {
+            // No hace falta hacer nada aquí
         }
-        else if (PhotoLoading === "rejected") {
+        else if (randomPhotoLoading === "rejected") {
             alert("Error en la api")
         }
-    }, [PhotoLoading])
+    }, [randomPhotoLoading])
+
+    // AKI OTRO IUS EFECT
 
     return (
         <div className="containerPhotos">
-            {PhotoLoading === "pending" ?
+            {randomPhotoLoading === "pending" ?
                 <p>Loading...</p> :
-                PhotoList.map((photo, index) =>
+                // {}
+                randomPhotoList.map((photo, index) =>
                     <DisplayPhoto key={index} data={photo} />
                 )
             }

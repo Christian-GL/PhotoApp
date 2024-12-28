@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { PhotoSlice } from "./features/photoSlice";
+import { PhotoSlice } from "./features/random/randomPhotoListSlice";
 
 export const store = configureStore({
     reducer: {

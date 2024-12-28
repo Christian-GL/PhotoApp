@@ -1,14 +1,13 @@
 
+import { saveAs } from 'file-saver';
+
 import './displayPhoto.css'
 
 export const DisplayPhoto = (props) => {
 
-    const thisPhoto = document.getElementById(props.data.id)        // null porque se lee antes de asignarle el id en el return
-
     const downloadPhoto = () => {
         console.log('downloaded')
-        console.log(props.data.id)
-        console.log(thisPhoto)
+        saveAs(props.data.url, `${props.data.description}.jpg`);
     }
 
     const configuratePhoto = () => {
@@ -16,23 +15,27 @@ export const DisplayPhoto = (props) => {
     }
 
     const makeFavoritePhoto = () => {
-        console.log('favorite')
-        // thisPhoto.classList.add('nonFavoriteHide')
-        // thisPhoto.classList.add('favoriteDisplay')
+        localStorage.setItem(props.data.id, props.data)
+        const imgNonFavorite = document.getElementById(`nonFavorite-${props.data.id}`)
+        const imgFavorite = document.getElementById(`favorite-${props.data.id}`)
+        imgNonFavorite.classList.add('displayNone')
+        imgFavorite.classList.add('displayBlock')
     }
     const makeNonFavoritePhoto = () => {
-        console.log('nonFavorite')
-        // thisPhoto.classList.remove('nonFavoriteHide')
-        // thisPhoto.classList.remove('favoriteDisplay')
+        localStorage.removeItem(props.data.id, props.data)
+        const imgNonFavorite = document.getElementById(`nonFavorite-${props.data.id}`)
+        const imgFavorite = document.getElementById(`favorite-${props.data.id}`)
+        imgNonFavorite.classList.remove('displayNone')
+        imgFavorite.classList.remove('displayBlock')
     }
-    
+
     return (
         <div className='containerPhoto' id={props.data.id}>
             <img className='photo' src={props.data.url}></img>
-            <img className='download' onClick={downloadPhoto} src='img\Download-icon.png'></img>
-            <img className='configuration' onClick={configuratePhoto} src='img\Configuration-icon.png'></img>
-            <img className='nonFavorite' onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
-            <img className='favorite' onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img>
+            <img className='download' id={`download-${props.data.id}`} onClick={downloadPhoto} src='img\Download-icon.png'></img>
+            <img className='configuration' id={`configuration-${props.data.id}`} onClick={configuratePhoto} src='img\Configuration-icon.png'></img>
+            <img className='nonFavorite' id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
+            <img className='favorite' id={`favorite-${props.data.id}`} onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img>
         </div>
     )
 }

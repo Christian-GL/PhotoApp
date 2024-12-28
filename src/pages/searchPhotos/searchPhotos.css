@@ -70,8 +70,8 @@
     font-size: 1em;
     background-image: url("D:\Varios-PC\Educacion\TrainingOxygen\Temario\Practicas\PhotoAPP\img\Heart-icon.png");
     /* background-image: url("img\Heart-icon.png"); */
-    background-position: bottom 0.6em right 0.6em;
-    background-size: 25px 25px;
+    background-position: bottom 0.5em right 0.6em;
+    background-size: 30px 30px;
 }
 
 .buttonSwitchPage2 {
