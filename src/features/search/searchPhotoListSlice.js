@@ -7,7 +7,7 @@ export const SearchSlice = createSlice({
     initialState: {
         data: '',
         status: 'idle',
-        error: 'false'
+        error: false
     },
     reducers: {
         'searchTerm': (state, action) => {

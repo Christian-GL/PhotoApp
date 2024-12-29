@@ -1,26 +1,26 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const SearchPhotoListThunk = createAsyncThunk("", async () => {
+export const SearchPhotoListThunk = createAsyncThunk("", async (keyword) => {
 
     const tokenAccesKey = '?client_id=AWEgvWVrPBmVzjAlGNA9Ba1QHo1VbAMxcYfW8sIHmY0'
-    const param = "&count=2"
+    const keyTerm = `&query=${keyword}`
 
     try {
-        const request = await fetch(`https://api.unsplash.com/photos/random${tokenAccesKey}${param}`)
+        const request = await fetch(`https://api.unsplash.com/search/photos${tokenAccesKey}${keyTerm}`)
 
         if (request.ok) {
             const json = await request.json()
             let photoList = []
-            for (let i = 0; i < json.length; i++) {
+            for (let i = 0; i < json.results.length; i++) {
                 photoList.push({
-                    id: json[i].id,
-                    url: json[i].urls.full,
-                    width: json[i].width,
-                    height: json[i].height,
-                    likes: json[i].likes,
-                    added: json[i].created_at,
-                    description: json[i].alternative_slugs.es
+                    id: json.results[i].id,
+                    url: json.results[i].urls.full,
+                    width: json.results[i].width,
+                    height: json.results[i].height,
+                    likes: json.results[i].likes,
+                    added: json.results[i].created_at,
+                    description: json.results[i].alternative_slugs.es
                 })
             }
             return photoList

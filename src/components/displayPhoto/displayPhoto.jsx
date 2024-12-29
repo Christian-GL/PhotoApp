@@ -1,4 +1,5 @@
 
+import { useEffect } from "react"
 import { saveAs } from 'file-saver';
 
 import './displayPhoto.css'
@@ -6,12 +7,21 @@ import './displayPhoto.css'
 export const DisplayPhoto = (props) => {
 
     const downloadPhoto = () => {
-        console.log('downloaded')
         saveAs(props.data.url, `${props.data.description}.jpg`);
     }
 
     const configuratePhoto = () => {
         console.log('configurate')
+    }
+
+    const refreshHeart = () => {
+        console.log(localStorage.getItem(props.data.id))
+        if (localStorage.getItem(props.data.id !== null)) {
+            const imgNonFavorite = document.getElementById(`nonFavorite-${props.data.id}`)
+            const imgFavorite = document.getElementById(`favorite-${props.data.id}`)
+            imgNonFavorite.classList.add('displayNone')
+            imgFavorite.classList.add('displayBlock')
+        }
     }
 
     const makeFavoritePhoto = () => {

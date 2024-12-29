@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import "../searchPhotos/searchPhotos.css"
 import { ContainerPhotos } from "../../components/containerPhotos/containerPhotos.jsx"
-import { InputSearch } from '../../components/inputSearch/inputSearch.jsx';
 import { ButtonSort } from '../../components/buttonSort/buttonSort.jsx';
 
 export const PageLayout = () => {
@@ -23,8 +22,20 @@ export const PageLayout = () => {
             <div className="containerHeader">
                 <h2 className="title">PhotoApp</h2>
                 {pathName === "/" ?
-                    <InputSearch placeholderText="Search photos" /> :
-                    <InputSearch placeholderText="Search description" />
+                    <input
+                        className="input"
+                        id='inputSearch'
+                        onChange={handleInputTerm}
+                        type='search'
+                        placeholder='Search photos'
+                    /> :
+                    <input
+                        className="input"
+                        id='inputSearch'
+                        onChange={handleInputTerm}
+                        type='search'
+                        placeholder='Search description'
+                    />
                 }
             </div>
             <div className="containerButtons">
