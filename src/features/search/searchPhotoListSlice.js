@@ -5,15 +5,10 @@ import { SearchPhotoListThunk } from './searchPhotoListThunk';
 export const SearchSlice = createSlice({
     name: 'searchPhotos',
     initialState: {
-        data: '',
         status: 'idle',
         error: false
     },
-    reducers: {
-        'searchTerm': (state, action) => {
-            state = action.payload
-        }
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(SearchPhotoListThunk.pending, (state, action) => {
             state.status = 'pending'
@@ -32,5 +27,3 @@ export const SearchSlice = createSlice({
 export const getSearchPhotoData = (state) => state.photos.data
 export const getSearchPhotoStatus = (state) => state.photos.status
 export const getSearchPhotoError = (state) => state.photos.error
-
-export const { searchTerm } = SearchSlice.actions
