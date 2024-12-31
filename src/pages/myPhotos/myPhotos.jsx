@@ -34,8 +34,7 @@ export const PageMyPhotos = () => {
                 <ButtonSort />
                 <button className="button buttonSwitchPage2" onClick={goToPage1}>Return to<br />Search photos</button>
             </div>
-            {/* {console.log('favoriteList return -->', favoriteList)} */}
-            <ContainerPhotos photoList={photoListFromStorage} />
+            <ContainerPhotos photoList={photoListFromStorage} displayConfiguration={true} />
         </>
     )
 
