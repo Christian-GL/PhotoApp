@@ -1,7 +1,7 @@
 
 // import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// export const RandomPhotoListThunk = createAsyncThunk("", async () => {
+// export const RandomPhotoListThunk = createAsyncThunk("randomPhotoListThunk", async () => {
 
 //     const tokenAccesKey = '?client_id=AWEgvWVrPBmVzjAlGNA9Ba1QHo1VbAMxcYfW8sIHmY0'
 //     const param = "&count=6"

@@ -2,20 +2,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const getPhotoListFromLocalStorage = () => {
-    const favoriteList = []
     const storageObject = { ...localStorage };
     const storageList = Object.keys(storageObject).map((key) => (
         storageObject[key])
     )
+    const favoriteList = []
     for (let i = 0; i < storageList.length; i++) {
-        const photo = JSON.parse(storageList[i])
-        favoriteList.push(photo)
+        favoriteList.push(JSON.parse(storageList[i]))
     }
     return favoriteList
 }
 
-export const FavoriteSlice = createSlice({
-    name: 'favoritePhotos',
+export const FavoritePhotoListSlice = createSlice({
+    name: 'favoritePhotoList',
     initialState: getPhotoListFromLocalStorage(),
     reducers: {
         'addPhoto': (state, action) => {
@@ -30,4 +29,4 @@ export const FavoriteSlice = createSlice({
     }
 })
 
-export const { addPhoto, removePhoto } = FavoriteSlice.actions
+export const { addPhoto, removePhoto } = FavoritePhotoListSlice.actions

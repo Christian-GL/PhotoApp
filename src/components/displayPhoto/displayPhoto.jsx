@@ -5,8 +5,8 @@ import { saveAs } from 'file-saver';
 
 import './displayPhoto.css'
 import { Popup } from "../popup/popup.jsx";
-import { getPhotoListFromLocalStorage } from "../../features/favorite/favoritePhotoSlice.js";
-import { addPhoto, removePhoto } from "../../features/favorite/favoritePhotoSlice";
+import { getPhotoListFromLocalStorage } from "../../features/favoriteSlice/favoritePhotoSlice.js";
+import { addPhoto, removePhoto } from "../../features/favoriteSlice/favoritePhotoSlice.js";
 
 
 export const refreshHearts = (photoList) => {
@@ -82,13 +82,14 @@ export const DisplayPhoto = (props) => {
     }
 
     return (
-        <div className='containerPhoto' id={props.data.id} onClick={showPopup}>
+        // <div className='containerPhoto' id={props.data.id} onClick={showPopup}></div>
+        <div className='containerPhoto' id={props.data.id}>
             <img className='photo' src={props.data.url}></img>
             <img className='download' id={`download-${props.data.id}`} onClick={downloadPhoto} src='img\Download-icon.png'></img>
             <img className='configuration' id={`configuration-${props.data.id}`} onClick={configuratePhoto} src='img\Configuration-icon.png'></img>
             <img className='nonFavorite' id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
             <img className='favorite' id={`favorite-${props.data.id}`} onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img>
-            <Popup data={props.data} />
+            {/* <Popup data={props.data} /> */}
         </div>
     )
 }

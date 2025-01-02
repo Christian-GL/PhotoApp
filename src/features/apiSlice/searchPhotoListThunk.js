@@ -1,7 +1,7 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const SearchPhotoListThunk = createAsyncThunk("", async (keyword) => {
+export const SearchPhotoListThunk = createAsyncThunk("searchPhotoListThunk", async (keyword) => {
 
     const tokenAccesKey = '?client_id=AWEgvWVrPBmVzjAlGNA9Ba1QHo1VbAMxcYfW8sIHmY0'
     const keyTerm = `&query=${keyword}`
