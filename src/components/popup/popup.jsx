@@ -19,16 +19,13 @@ export const Popup = (props) => {
 
     const closePopup = () => {
         setTimeout(function () {
-            console.log('close popup -->', props.data.id)
+            console.log('close')
             const popup = document.getElementById(`popup-${props.data.id}`)
             popup.classList.remove('displayFlex')
-            // popup.style.display = 'none'
         }, 50);
     }
 
-    const saveChanges = () => {
-
-    }
+    const saveChanges = () => { }
 
     return (
         <div id={`popup-${props.data.id}`} className='popup'>
@@ -52,7 +49,7 @@ export const Popup = (props) => {
                 <b>Added: </b>
                 {props.data.added}
             </p>
-            <cite id='description' contenteditable="true">
+            <cite id='description' contentEditable={props.descriptionEditable}>
                 <b>Description: </b>
                 {props.data.description}
             </cite>

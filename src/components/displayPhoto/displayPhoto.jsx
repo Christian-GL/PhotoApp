@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { saveAs } from 'file-saver';
 
@@ -22,32 +22,17 @@ export const refreshHearts = (photoList) => {
     }
 }
 
-export const getSelectedPhoto = () => {
-    setTimeout(function () {
-        console.log('getSelectedPhoto')
-        return {
-            id: '1WqLUPvfvqIo',
-            url: 'https://images.unsplash.com/photo-1734532873375-574fd74045c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2ODkzNzd8MHwxfGFsbHwyfHx8fHx8fHwxNzM1MDY0MzA2fA&ixlib=rb-4.0.3&q=85',
-            width: 4990,
-            height: 6643,
-            likes: 76,
-            added: '2024-12-18T14:57:12Z',
-            description: 'un-reloj-en-el-costado-de-un-edificio-verde-WqLUPvfvqIo'
-        }
-    }, 50);
-}
-
 export const DisplayPhoto = (props) => {
 
     const dispatch = useDispatch()
     const photoListFromStorage = useSelector(getPhotoListFromLocalStorage)
+    const [descriptionEditable, setDescriptionEditable] = useState(false)
+
 
     const showPopup = () => {
-        setTimeout(function () {
-            // selectedPhoto = props.data
-            const popup = document.getElementById(`popup-${props.data.id}`)
-            popup.classList.add('displayFlex')
-        }, 50);
+        console.log('show')
+        const popup = document.getElementById(`popup-${props.data.id}`)
+        popup.classList.add('displayFlex')
     }
 
     const downloadPhoto = () => {
@@ -62,6 +47,22 @@ export const DisplayPhoto = (props) => {
     }
     const configuratePhoto = () => {
         console.log('configurate')
+        setDescriptionEditable(true)
+        showPopup
+    }
+
+    const isFavorite = () => {
+        const photoListFromStorage = useSelector(getPhotoListFromLocalStorage)
+        console.log('')
+        for (let i = 0; i < photoListFromStorage.length; i++) {
+            console.log('PROPS-->', props.data.id, ' VS STORAGE-->', photoListFromStorage[i].id)
+            if (photoListFromStorage[i].id === props.data.id) {
+                console.log('TRUE')
+                return true
+            }
+        }
+        console.log('FALSE')
+        return false
     }
 
     const makeFavoritePhoto = () => {
@@ -69,27 +70,34 @@ export const DisplayPhoto = (props) => {
         // dispatch(addPhoto(props.data))
         const imgNonFavorite = document.getElementById(`nonFavorite-${props.data.id}`)
         const imgFavorite = document.getElementById(`favorite-${props.data.id}`)
-        imgNonFavorite.classList.add('displayNone')
+        imgFavorite.classList.remove('displayNone')
         imgFavorite.classList.add('displayBlock')
+        imgNonFavorite.classList.remove('displayBlock')
+        imgNonFavorite.classList.add('displayNone')
+
     }
     const makeNonFavoritePhoto = () => {
         localStorage.removeItem(props.data.id, JSON.stringify(props.data))
         // dispatch(removePhoto(props.data))
         const imgNonFavorite = document.getElementById(`nonFavorite-${props.data.id}`)
         const imgFavorite = document.getElementById(`favorite-${props.data.id}`)
-        imgNonFavorite.classList.remove('displayNone')
         imgFavorite.classList.remove('displayBlock')
+        imgFavorite.classList.add('displayNone')
+        imgNonFavorite.classList.remove('displayNone')
+        imgNonFavorite.classList.add('displayBlock')
     }
 
     return (
         // <div className='containerPhoto' id={props.data.id} onClick={showPopup}></div>
-        <div className='containerPhoto' id={props.data.id}>
+        <div className='containerPhoto' id={props.data.id} onClick={showPopup}>
             <img className='photo' src={props.data.url}></img>
             <img className='download' id={`download-${props.data.id}`} onClick={downloadPhoto} src='img\Download-icon.png'></img>
             <img className='configuration' id={`configuration-${props.data.id}`} onClick={configuratePhoto} src='img\Configuration-icon.png'></img>
-            <img className='nonFavorite' id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
-            <img className='favorite' id={`favorite-${props.data.id}`} onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img>
-            {/* <Popup data={props.data} /> */}
+            {/* <img className='nonFavorite' id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
+            <img className='favorite' id={`favorite-${props.data.id}`} onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img> */}
+            <img className={`nonFavorite ${isFavorite() ? 'displayNone' : 'displayBlock'}`} id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>
+            <img className={`favorite ${isFavorite() ? 'displayBlock' : 'displayNone'}`} id={`favorite-${props.data.id}`} onClick={makeNonFavoritePhoto} src='img\Heart-icon.png'></img>
+            <Popup data={props.data} descriptionEditable={descriptionEditable} />
         </div>
     )
 }

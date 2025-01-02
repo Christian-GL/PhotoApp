@@ -5,8 +5,7 @@ import { useEffect } from "react"
 import './containerPhotos.css'
 import { refreshHearts } from "../../components/displayPhoto/displayPhoto.jsx";
 import { getPhotoListFromLocalStorage } from "../../features/favoriteSlice/favoritePhotoSlice.js";
-import { DisplayPhoto, getSelectedPhoto } from "../displayPhoto/displayPhoto.jsx"
-import { Popup } from "../popup/popup.jsx";
+import { DisplayPhoto } from "../displayPhoto/displayPhoto.jsx"
 
 export const ContainerPhotos = (props) => {
 
@@ -19,7 +18,7 @@ export const ContainerPhotos = (props) => {
                     <DisplayPhoto key={index} data={photo} displayConfiguration={props.displayConfiguration} />
                 )
             }
-            {refreshHearts(photoListFromStorage)}
+            {/* {refreshHearts(photoListFromStorage)} */}
         </div>
     )
 

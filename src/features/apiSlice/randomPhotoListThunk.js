@@ -38,7 +38,7 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const RandomPhotoListThunk = createAsyncThunk("", async () => {
+export const RandomPhotoListThunk = createAsyncThunk("randomPhotoListThunk", async () => {
 
     try {
         let photoList = []

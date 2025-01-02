@@ -56,7 +56,7 @@
 
 .nonFavorite {
     position: absolute;
-    display: block;
+    /* display: block; */
     width: 3rem;
     height: 3rem;
     right: 0.5rem;
@@ -71,7 +71,7 @@
 
 .favorite {
     position: absolute;
-    display: none;
+    /* display: none; */
     width: 2.15rem;
     height: 2rem;
     right: 0.9rem;

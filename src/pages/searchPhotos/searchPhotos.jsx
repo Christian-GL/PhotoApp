@@ -7,6 +7,7 @@ import "./searchPhotos.css"
 import { RandomPhotoListThunk } from "../../features/apiSlice/randomPhotoListThunk.js";
 import { SearchPhotoListThunk } from "../../features/apiSlice/searchPhotoListThunk.js";
 import { getRandomPhotoData, getRandomPhotoStatus, getRandomPhotoError, getSearchPhotoData, getSearchPhotoStatus, getSearchPhotoError } from "../../features/apiSlice/apiPhotoListSlice.js";
+// import { getRandomPhotoData, getRandomPhotoStatus, getRandomPhotoError } from "../../features/apiSlice/apiPhotoListSlice.js";
 import { ContainerPhotos } from "../../components/containerPhotos/containerPhotos.jsx"
 import { ButtonSort } from '../../components/buttonSort/buttonSort.jsx';
 
@@ -28,26 +29,24 @@ export const PageSearchPhotos = () => {
     }, [randomPhotoLoading])
 
 
-    const callApiSearch = (inputText) => {
-        const searchPhotoList = useSelector(getSearchPhotoData)
-        const searchPhotoLoading = useSelector(getSearchPhotoStatus)
-        const searchPhotoError = useSelector(getSearchPhotoError)       // <-- USAR ESTO
-        useEffect(() => {
-            if (searchPhotoLoading === "idle") { dispatch(SearchPhotoListThunk(inputText)) }
-            else if (searchPhotoLoading === "fulfilled") {
-                return searchPhotoList
-            }
-            else if (searchPhotoLoading === "rejected") { alert("Error en la api") }
-        }, [searchPhotoLoading])
-    }
-
-
+    // const callApiSearch = (inputText) => {
+    //     const searchPhotoList = useSelector(getSearchPhotoData)
+    //     const searchPhotoLoading = useSelector(getSearchPhotoStatus)
+    //     const searchPhotoError = useSelector(getSearchPhotoError)       // <-- USAR ESTO
+    //     useEffect(() => {
+    //         if (searchPhotoLoading === "idle") { dispatch(SearchPhotoListThunk(inputText)) }
+    //         else if (searchPhotoLoading === "fulfilled") {
+    //             return searchPhotoList
+    //         }
+    //         else if (searchPhotoLoading === "rejected") { alert("Error en la api") }
+    //     }, [searchPhotoLoading])
+    // }
 
     const handleInputTerm = (e) => {
         const inputText = e.target.value
         inputText === "" ?
-            dispatch(useSelector(getRandomPhotoData)) :
-            dispatch(callApiSearch(inputText))
+            dispatch(RandomPhotoListThunk()) :
+            dispatch(SearchPhotoListThunk(inputText))
     }
 
     return (
