@@ -7,12 +7,12 @@ export const Popup = (props) => {
     const addDocumentEvents = () => {
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                this.popupContainer.classList.remove('popup-js')
+                popupContainer.classList.remove('popup-js')
             }
         })
         document.addEventListener('click', (event) => {
-            if (!this.popupContainer.contains(event.target)) {
-                this.popupContainer.classList.remove('popup-js')
+            if (!popupContainer.contains(event.target)) {
+                popupContainer.classList.remove('popup-js')
             }
         })
     }
