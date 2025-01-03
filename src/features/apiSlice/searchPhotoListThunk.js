@@ -15,7 +15,8 @@ export const SearchPhotoListThunk = createAsyncThunk("searchPhotoListThunk", asy
             for (let i = 0; i < json.results.length; i++) {
                 photoList.push({
                     id: json.results[i].id,
-                    url: json.results[i].urls.full,
+                    urlSmall: json.results[i].urls.small,
+                    urlFull: json.results[i].urls.full,
                     width: json.results[i].width,
                     height: json.results[i].height,
                     likes: json.results[i].likes,
@@ -25,6 +26,7 @@ export const SearchPhotoListThunk = createAsyncThunk("searchPhotoListThunk", asy
             }
             return photoList
         }
+        else { return [] }
     }
     catch (error) {
         console.log(error)

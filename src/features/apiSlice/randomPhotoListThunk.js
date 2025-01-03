@@ -15,7 +15,8 @@
 //             for (let i = 0; i < json.length; i++) {
 //                 photoList.push({
 //                     id: json[i].id,
-//                     url: json[i].urls.full,
+//                     urlSmall: json[i].urls.small,
+//                     urlFull: json[i].urls.full,
 //                     width: json[i].width,
 //                     height: json[i].height,
 //                     likes: json[i].likes,
@@ -25,6 +26,7 @@
 //             }
 //             return photoList
 //         }
+//         else { return [] }
 //     }
 //     catch (error) {
 //         console.log(error)
@@ -45,7 +47,8 @@ export const RandomPhotoListThunk = createAsyncThunk("randomPhotoListThunk", asy
         for (let i = 0; i < 10; i++) {
             photoList.push({
                 id: i + 'WqLUPvfvqIo',
-                url: 'https://images.unsplash.com/photo-1734532873375-574fd74045c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2ODkzNzd8MHwxfGFsbHwyfHx8fHx8fHwxNzM1MDY0MzA2fA&ixlib=rb-4.0.3&q=85',
+                urlSmall: 'https://images.unsplash.com/photo-1734532873375-574fd74045c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2ODkzNzd8MHwxfGFsbHwyfHx8fHx8fHwxNzM1MDY0MzA2fA&ixlib=rb-4.0.3&q=85',
+                urlFull: 'https://images.unsplash.com/photo-1734532873375-574fd74045c5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w2ODkzNzd8MHwxfGFsbHwyfHx8fHx8fHwxNzM1MDY0MzA2fA&ixlib=rb-4.0.3&q=85',
                 width: 4990,
                 height: 6643,
                 likes: 76,

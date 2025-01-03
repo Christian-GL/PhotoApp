@@ -6,11 +6,11 @@ export const getPhotoListFromLocalStorage = () => {
     const storageList = Object.keys(storageObject).map((key) => (
         storageObject[key])
     )
-    const favoriteList = []
+    const favoritePhotoList = []
     for (let i = 0; i < storageList.length; i++) {
-        favoriteList.push(JSON.parse(storageList[i]))
+        favoritePhotoList.push(JSON.parse(storageList[i]))
     }
-    return favoriteList
+    return favoritePhotoList
 }
 
 export const FavoritePhotoListSlice = createSlice({
@@ -19,14 +19,15 @@ export const FavoritePhotoListSlice = createSlice({
     reducers: {
         'addPhoto': (state, action) => {
             console.log('ola')
-            // state.push(action.payload)
+            state.push(action.payload)
             localStorage.setItem(action.payload.id, JSON.stringify(action.payload))
         },
         'removePhoto': (state, action) => {
-            // state.filter(photo => photo !== action.payload)
+            state.filter(photo => photo !== action.payload)
             localStorage.removeItem(action.payload.id, JSON.stringify(action.payload))
         }
     }
 })
 
+export const getFavoritePhotoList = (state) => state.favoritePhotoList
 export const { addPhoto, removePhoto } = FavoritePhotoListSlice.actions

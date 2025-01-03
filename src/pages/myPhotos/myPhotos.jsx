@@ -5,15 +5,15 @@ import { useDispatch, useSelector } from "react-redux"
 
 import '../searchPhotos/searchPhotos.css'
 import "./myPhotos.css"
-import { getPhotoListFromLocalStorage } from "../../features/favoriteSlice/favoritePhotoSlice.js";
-import { ContainerPhotos } from "../../components/containerPhotos/containerPhotos.jsx"
+import { getFavoritePhotoList } from "../../features/favoriteSlice/favoritePhotoSlice.js";
 import { ButtonSort } from '../../components/buttonSort/buttonSort.jsx';
+import { DisplayPhoto } from "../../components/displayPhoto/displayPhoto.jsx";
 
 
 export const PageMyPhotos = () => {
 
     const navigate = useNavigate();
-    const photoListFromStorage = useSelector(getPhotoListFromLocalStorage)
+    const favoritePhotoList = useSelector(getFavoritePhotoList)
 
     const goToPage1 = () => {
         navigate('/');
@@ -34,7 +34,11 @@ export const PageMyPhotos = () => {
                 <ButtonSort />
                 <button className="button buttonSwitchPage2" onClick={goToPage1}>Return to<br />Search photos</button>
             </div>
-            <ContainerPhotos photoList={photoListFromStorage} displayConfiguration={true} />
+            <div className="containerPhotos"> {
+                favoritePhotoList.map((photo, index) =>
+                    <DisplayPhoto key={index} data={photo} displayConfiguration={true} />
+                )}
+            </div>
         </>
     )
 

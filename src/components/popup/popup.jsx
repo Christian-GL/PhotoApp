@@ -18,11 +18,9 @@ export const Popup = (props) => {
     }
 
     const closePopup = () => {
-        setTimeout(function () {
-            console.log('close')
-            const popup = document.getElementById(`popup-${props.data.id}`)
-            popup.classList.remove('displayFlex')
-        }, 50);
+        console.log('close')
+        const popup = document.getElementById(`popup-${props.data.id}`)
+        popup.classList.remove('displayFlex')
     }
 
     const saveChanges = () => { }
