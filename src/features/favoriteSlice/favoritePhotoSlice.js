@@ -1,7 +1,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-export const getPhotoListFromLocalStorage = () => {
+const getPhotoListFromLocalStorage = () => {
     const storageObject = { ...localStorage };
     const storageList = Object.keys(storageObject).map((key) => (
         storageObject[key])
@@ -18,13 +18,12 @@ export const FavoritePhotoListSlice = createSlice({
     initialState: getPhotoListFromLocalStorage(),
     reducers: {
         'addPhoto': (state, action) => {
-            console.log('ola')
             state.push(action.payload)
             localStorage.setItem(action.payload.id, JSON.stringify(action.payload))
         },
         'removePhoto': (state, action) => {
-            state.filter(photo => photo !== action.payload)
-            localStorage.removeItem(action.payload.id, JSON.stringify(action.payload))
+            state.pop(state.filter(photo => photo.id === action.payload.id))
+            localStorage.removeItem(action.payload.id)
         }
     }
 })

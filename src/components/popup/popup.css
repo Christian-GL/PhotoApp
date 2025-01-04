@@ -17,14 +17,21 @@
     background-color: #FFD3D3;
 }
 
-#name {
+.textAlignCenter {
     text-align: center;
-    margin-bottom: 1.5rem;
 }
 
-#description {
+.addMarginTop {
+    margin-top: 1.5rem;
+}
+
+.description {
     margin-top: 1.5rem;
     width: 90%;
+}
+
+.data {
+    display: inline-block;
 }
 
 .imgSave {

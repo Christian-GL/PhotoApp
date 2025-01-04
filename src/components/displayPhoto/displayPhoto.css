@@ -2,14 +2,14 @@
     position: relative;
 }
 
+.containerPhoto:hover>.photo {
+    box-shadow: 0 0 0.2rem 0.2rem black;
+}
+
 .photo {
     width: 100%;
     height: 100%;
     border-radius: 0.75rem;
-}
-
-.photo:hover {
-    box-shadow: 0 0 0.2rem 0.2rem black;
 }
 
 .download {
@@ -44,7 +44,7 @@
     display: none;
     width: 4rem;
     height: 2rem;
-    right: 2.5rem;
+    right: 3rem;
     bottom: 1rem;
 }
 

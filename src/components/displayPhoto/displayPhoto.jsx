@@ -6,7 +6,6 @@ import { saveAs } from 'file-saver';
 import './displayPhoto.css'
 import { Popup } from "../popup/popup.jsx";
 import { addPhoto, removePhoto, getFavoritePhotoList } from "../../features/favoriteSlice/favoritePhotoSlice.js";
-import { getPhotoListFromLocalStorage } from "../../features/favoriteSlice/favoritePhotoSlice.js";
 
 
 export const DisplayPhoto = (props) => {
@@ -14,20 +13,27 @@ export const DisplayPhoto = (props) => {
     const dispatch = useDispatch()
     const [descriptionEditable, setDescriptionEditable] = useState(false)
 
-    const showPopup = () => {
-        console.log('show')
-        const popup = document.getElementById(`popup-${props.data.id}`)
-        popup.classList.add('displayFlex')
-    }
-
     const downloadPhoto = () => {
-        console.log(props.data)
         saveAs(props.data.urlFull, `${props.data.description}.jpg`);
     }
 
-    const configuratePhoto = () => {
+    // const showPopup = (editableDescription) => {
+    //     setDescriptionEditable(editableDescription)
+    //     const popup = document.getElementById(`popup-${props.data.id}`)
+    //     popup.classList.add('displayFlex')
+    // }
+
+    const showNonEditablePopup = () => {
+        setDescriptionEditable(false)
+        showPopup()
+    }
+    const showEditablePopup = () => {
         setDescriptionEditable(true)
         showPopup()
+    }
+    const showPopup = () => {
+        const popup = document.getElementById(`popup-${props.data.id}`)
+        popup.classList.add('displayFlex')
     }
 
     const isFavorite = () => {
@@ -68,10 +74,10 @@ export const DisplayPhoto = (props) => {
 
     return (
         <div className='containerPhoto' id={props.data.id}>
-            <img className='photo' src={props.data.urlSmall} onClick={showPopup}></img>
+            <img className='photo' src={props.data.urlSmall} onClick={showNonEditablePopup}></img>
             <img className='download' id={`download-${props.data.id}`} onClick={downloadPhoto} src='img\Download-icon.png'></img>
             <img className={`configuration ${props.displayConfiguration ? 'displayBlock' : 'displayNone'}`}
-                id={`configuration-${props.data.id}`} onClick={configuratePhoto} src='img\Configuration-icon.png'></img>
+                id={`configuration-${props.data.id}`} onClick={showEditablePopup} src='img\Configuration-icon.png'></img>
 
             <img className={`nonFavorite ${isFavorite() ? 'displayNone' : 'displayBlock'}`}
                 id={`nonFavorite-${props.data.id}`} onClick={makeFavoritePhoto} src='img\HeartVoided-icon.png'></img>

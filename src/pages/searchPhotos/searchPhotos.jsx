@@ -13,6 +13,10 @@ import {
 import { ButtonSort } from '../../components/buttonSort/buttonSort.jsx';
 import { DisplayPhoto } from "../../components/displayPhoto/displayPhoto.jsx";
 
+
+/*LINK DOCUMENTACIÓN PROYECTO -->
+https://docs.google.com/document/d/1FOMIfgQbGmfNJ99T9frB7mr5Rk59BBQZo6SJeOVUnjM/edit?tab=t.0#heading=h.mefdyamqqlk4*/
+
 export const PageSearchPhotos = () => {
 
     const navigate = useNavigate()
